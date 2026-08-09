@@ -1,0 +1,13 @@
+# Arquivos de compilação do Java
+*.class
+bin/
+out/
+
+# Arquivos do VS Code e IDEs
+.vscode/
+.settings/
+.classpath
+.project
+
+# Arquivos de dados gerados
+*.csv
