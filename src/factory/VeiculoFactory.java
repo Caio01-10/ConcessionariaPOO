@@ -8,18 +8,18 @@ import model.Veiculo;
 
 public class VeiculoFactory {
 
-    public static Veiculo criarVeiculo(String tipo, String id, String marca, String modelo, 
+    public static Veiculo criarVeiculo(int tipo, String id, String marca, String modelo, 
                                        int ano, double preco, int detalheEspecifico, 
                                        TipoCombustivel tipoCombustivel) {
         
-        if (tipo == null) {
+        if (tipo == 0) {
             return null;
         }
 
-        if (tipo.equalsIgnoreCase("CARRO")) {
+        if (tipo == 1) {
             return new Carro(id, marca, modelo, ano, preco, StatusVeiculo.DISPONIVEL, detalheEspecifico, tipoCombustivel);
         } 
-        else if (tipo.equalsIgnoreCase("MOTO")) {
+        else if (tipo == 2) {
             return new Moto(id, marca, modelo, ano, preco, StatusVeiculo.DISPONIVEL, detalheEspecifico);
         }
 

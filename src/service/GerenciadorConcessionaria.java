@@ -8,15 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import exception.VeiculoIndisponivelException;
-import exception.VeiculoNaoEncontradoException;
-import model.Carro;
-import model.Moto;
-import model.Pessoa;
-import model.StatusVeiculo;
-import model.TipoCombustivel;
-import model.Veiculo;
-import model.Venda;
+import exception.*;
+import model.*;
 
 public class GerenciadorConcessionaria {
     private List<Veiculo> listarVeiculos;

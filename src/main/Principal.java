@@ -123,33 +123,58 @@ public class Principal {
 
     private static void cadastrarVeiculoMenu(Scanner scanner, GerenciadorConcessionaria gerenciador) {
         System.out.println("\n--- CADASTRO DE VEÍCULO ---");
-        System.out.print("Tipo (CARRO ou MOTO): ");
-        String tipo = scanner.nextLine();
+        System.out.print("Tipo (1:CARRO ou 2:MOTO): ");
+        int tipo = Integer.parseInt(scanner.nextLine());
+        if (tipo != 1 && tipo != 2) {
+            System.out.println("Tipo inválido! Use 1 para CARRO ou 2 para MOTO.");
+            return;
+        }
+        
 
         System.out.print("ID: ");
         String id = scanner.nextLine();
+        if (gerenciador.buscarVeiculoPorId(id) != null) {
+            System.out.println("ERRO: Veículo com ID " + id + " já existe!");
+            return;
+        }
 
         System.out.print("Marca: ");
         String marca = scanner.nextLine();
+        if (marca.trim().isEmpty() || marca.length() < 2) {
+            System.out.println("ERRO: Marca não pode ser vazia!");
+            return;
+        }
 
         System.out.print("Modelo: ");
         String modelo = scanner.nextLine();
+        if (modelo.trim().isEmpty() || modelo.length() < 2) {
+            System.out.println("ERRO: Modelo não pode ser vazio!");
+            return;
+        }
 
         System.out.print("Ano: ");
         int ano = Integer.parseInt(scanner.nextLine());
+        if (ano <= 0) {
+            System.out.println("ERRO: Ano inválido, ano não pode ser zero ou negativo!");
+            return;
+        }
 
         System.out.print("Preço: R$ ");
         double preco = Double.parseDouble(scanner.nextLine());
+        if (preco <= 0) {
+            System.out.println("ERRO: Preço deve ser maior que zero!");
+            return;
+        }
 
         TipoCombustivel combustivel = TipoCombustivel.FLEX;
         int detalhe = 0;
 
-        if (tipo.equalsIgnoreCase("CARRO")) {
+        if (tipo == 1) { // Carro
             System.out.print("Número de portas: ");
             detalhe = Integer.parseInt(scanner.nextLine());
             System.out.print("Combustível (FLEX, GASOLINA, ELETRICO): ");
             combustivel = TipoCombustivel.valueOf(scanner.nextLine().toUpperCase());
-        } else if (tipo.equalsIgnoreCase("MOTO")) {
+        } else if (tipo == 2) { // MOTO
             System.out.print("Cilindradas: ");
             detalhe = Integer.parseInt(scanner.nextLine());
         }
